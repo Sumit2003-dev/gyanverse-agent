@@ -16,9 +16,25 @@ from dotenv import load_dotenv
 load_dotenv()
 
 from google.adk.agents import Agent
+from google.adk.models import Gemini
+from google.genai import types
 
 import appconfig as config
 from . import tools
+
+# Retry transient rate-limit (429) and server errors with backoff. The free
+# tier caps requests per day, but per-minute bursts can briefly 429; retrying
+# smooths those out.
+_MODEL = Gemini(
+    model=config.GEMINI_MODEL,
+    retry_options=types.HttpRetryOptions(
+        attempts=5,
+        initial_delay=2.0,
+        exp_base=2.0,
+        max_delay=30.0,
+        http_status_codes=[408, 429, 500, 502, 503, 504],
+    ),
+)
 
 INSTRUCTION = """You are the GyanVerse Study Agent, an autonomous study-guide builder for students.
 
@@ -55,7 +71,7 @@ Guidelines:
 
 root_agent = Agent(
     name="gyanverse_study_agent",
-    model=config.GEMINI_MODEL,
+    model=_MODEL,
     description=(
         "Autonomous study-guide builder for students. Given a topic it retrieves "
         "context from indexed course material, identifies and fills knowledge gaps, "

@@ -13,6 +13,8 @@ load_dotenv()
 # --- Google Cloud / Vertex AI ---
 GOOGLE_CLOUD_PROJECT = os.getenv("GOOGLE_CLOUD_PROJECT", "")
 GOOGLE_CLOUD_LOCATION = os.getenv("GOOGLE_CLOUD_LOCATION", "us-central1")
+# Set GOOGLE_API_KEY to use the Gemini API (free tier, no GCP billing) instead of Vertex AI.
+GOOGLE_API_KEY = os.getenv("GOOGLE_API_KEY", "")
 
 # --- Gemini model used by the ADK agent + tool calls ---
 GEMINI_MODEL = os.getenv("GEMINI_MODEL", "gemini-3.5-flash")

@@ -33,10 +33,16 @@ def _normalize(vectors: np.ndarray) -> np.ndarray:
 
 
 def _embed_gemini(texts):
+    if config.GOOGLE_API_KEY:
+        from google import genai
+
+        client = genai.Client(api_key=config.GOOGLE_API_KEY)
+        resp = client.models.embed_content(model=config.EMBED_MODEL, contents=texts)
+        return [item.values for item in resp.embeddings]
     if not config.GOOGLE_CLOUD_PROJECT:
         raise ValueError(
             "GOOGLE_CLOUD_PROJECT is not set. Add it to your .env file, then run "
-            "`gcloud auth application-default login` (or set GOOGLE_APPLICATION_CREDENTIALS)."
+            "`gcloud auth application-default login` (or set GOOGLE_API_KEY)."
         )
     import vertexai
     from vertexai.language_models import TextEmbeddingModel

@@ -23,6 +23,8 @@ LLM_MODEL = os.getenv("LLM_MODEL", "gpt-4o-mini")
 # --- Google Cloud (Vertex AI) ---
 GOOGLE_CLOUD_PROJECT = os.getenv("GOOGLE_CLOUD_PROJECT", "")
 GOOGLE_CLOUD_LOCATION = os.getenv("GOOGLE_CLOUD_LOCATION", "us-central1")
+# Set GOOGLE_API_KEY to use the Gemini API (free tier, no GCP billing) instead of Vertex AI.
+GOOGLE_API_KEY = os.getenv("GOOGLE_API_KEY", "")
 
 # --- Chunking ---
 CHUNK_SIZE = 800
