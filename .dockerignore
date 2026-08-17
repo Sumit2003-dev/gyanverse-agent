@@ -1,0 +1,14 @@
+.venv/
+__pycache__/
+*.pyc
+.env
+.state/
+vectorstore/
+outputs/
+.git/
+.gitignore
+Dockerfile
+deploy.ps1
+README.md
+ARCHITECTURE.md
+*.log

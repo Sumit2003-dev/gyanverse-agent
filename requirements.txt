@@ -1,0 +1,21 @@
+# --- ADK + Google Cloud ---
+google-adk>=2.6.0
+google-cloud-aiplatform>=1.70.0
+google-cloud-firestore>=2.19.0
+google-genai>=1.0.0
+
+# --- Retrieval (pre-existing GyanVerse AI pipeline) ---
+faiss-cpu>=1.8.0
+chromadb>=0.5.0
+pypdf>=4.0.0
+python-docx>=1.1.0
+
+# --- Optional embedding backends ---
+# openai          (pre-existing GyanVerse AI backend)
+openai>=1.30.0
+# local/offline  (needs torch — optional, uncomment if you want it)
+# sentence-transformers>=3.0.0
+
+# --- Frontend / env ---
+streamlit>=1.40.0
+python-dotenv>=1.0.0

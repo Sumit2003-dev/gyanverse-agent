@@ -1,0 +1,1 @@
+"""GyanVerse retrieval pipeline (pre-existing component from GyanVerse AI)."""
