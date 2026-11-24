@@ -22,3 +22,7 @@ data/*.txt
 # OS
 Thumbs.db
 .DS_Store
+
+# Submissions & extra docs
+*.pdf
+BUILD_LOG.md
